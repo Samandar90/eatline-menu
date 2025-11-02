@@ -1,719 +1,415 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>EATLINE — меню</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --text: #ffffff;
-        --muted: rgba(255, 255, 255, 0.75);
-        --accent: #f2d34a;
-        --line: rgba(255, 255, 255, 0.15);
-        --radius: 18px;
-      }
-
-      /* ===== БАЗА + ЖИВОЙ ГРАДИЕНТ ===== */
-      html,
-      body {
-        margin: 0;
-        height: 100%;
-        font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial,
-          sans-serif;
-        color: var(--text);
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        overflow-x: hidden;
-        background: radial-gradient(
-            1000px 600px at 50% -10%,
-            rgba(50, 255, 180, 0.15),
-            transparent 70%
-          ),
-          radial-gradient(
-            900px 500px at 0% 100%,
-            rgba(255, 215, 100, 0.12),
-            transparent 80%
-          ),
-          linear-gradient(135deg, #0b2f27 0%, #0f3f31 40%, #14694e 100%);
-        background-size: 200% 200%;
-        animation: gradientMove 12s ease-in-out infinite alternate;
-        background-attachment: fixed;
-      }
-      @keyframes gradientMove {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 50% 50%;
-        }
-        100% {
-          background-position: 100% 50%;
-        }
-      }
-
-      .app {
-        width: 100%;
-        max-width: 480px;
-        padding: 18px 14px 88px; /* + отступ под нижнюю панель */
-        box-sizing: border-box;
-      }
-
-      /* ===== ЛИПКАЯ ШАПКА ===== */
-      .topbar {
-        position: sticky;
-        top: 0;
-        z-index: 5;
-        padding: 10px 12px;
-        margin: -18px -14px 10px;
-        backdrop-filter: saturate(1.2) blur(6px);
-        background: linear-gradient(
-          180deg,
-          rgba(0, 0, 0, 0.28),
-          rgba(0, 0, 0, 0)
-        );
-        border-bottom: 1px solid var(--line);
-      }
-      .brand {
-        text-align: center;
-        font-weight: 800;
-        letter-spacing: 0.8px;
-        font-size: 22px;
-        background: linear-gradient(90deg, #fff, var(--accent));
-        -webkit-background-clip: text;
-        color: transparent;
-      }
-      .chips {
-        display: flex;
-        gap: 8px;
-        overflow-x: auto;
-        padding: 6px 2px 2px;
-      }
-      .chip {
-        flex: 0 0 auto;
-        padding: 8px 12px;
-        border-radius: 999px;
-        font-size: 13px;
-        font-weight: 600;
-        border: 1px solid var(--line);
-        color: var(--muted);
-        background: rgba(255, 255, 255, 0.06);
-        text-decoration: none;
-      }
-      .chip:hover {
-        color: #fff;
-        border-color: rgba(255, 255, 255, 0.35);
-      }
-
-<<<<<<< HEAD
-    /* ===== БАННЕР ДОСТАВКИ ===== */
-    .delivery-banner{
-      margin: 10px 0 6px;
-      display:flex; align-items:center; justify-content:center; gap:10px;
-      padding: 10px 12px;
-      background: linear-gradient(90deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
-      border:1px solid var(--line);
-      border-radius: 14px;
-      font-weight:700;
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EATLINE — меню</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --text: #ffffff;
+      --muted: rgba(255, 255, 255, 0.75);
+      --accent: #f2d34a;
+      --line: rgba(255, 255, 255, 0.15);
+      --radius: 18px;
     }
-    .delivery-badge:hover {
-  transform: scale(1.07);
-  box-shadow:
-    0 0 16px rgba(120, 255, 200, 0.7),
-    inset 0 0 10px rgba(255, 255, 255, 0.5),
-    0 6px 16px rgba(0, 0, 0, 0.3);
-}
 
-@keyframes badgeGlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-=======
-      /* ===== БАННЕР ДОСТАВКИ ===== */
-      .delivery-banner {
-        margin: 10px 0 6px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 10px 12px;
-        background: linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0.12),
-          rgba(255, 255, 255, 0.06)
-        );
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        font-weight: 700;
-      }
-      .delivery-badge {
-        display: inline-block;
-        padding: 6px 14px;
-        border-radius: 999px;
-        font-size: 13px;
-        font-weight: 800;
-        color: #0a3024;
-        text-align: center;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
->>>>>>> b368b37 (Update1.1: новое меню (цены, бейджи, сеты, контакты))
+    /* ===== БАЗА + ЖИВОЙ ГРАДИЕНТ ===== */
+    html, body {
+      margin: 0;
+      height: 100%;
+      font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      overflow-x: hidden;
+      background:
+        radial-gradient(1000px 600px at 50% -10%, rgba(50, 255, 180, 0.15), transparent 70%),
+        radial-gradient(900px 500px at 0% 100%, rgba(255, 215, 100, 0.12), transparent 80%),
+        linear-gradient(135deg, #0b2f27 0%, #0f3f31 40%, #14694e 100%);
+      background-size: 200% 200%;
+      animation: gradientMove 12s ease-in-out infinite alternate;
+      background-attachment: fixed;
+    }
+    @keyframes gradientMove { 0%{background-position:0% 50%} 50%{background-position:50% 50%} 100%{background-position:100% 50%} }
 
-        background: linear-gradient(135deg, #b9ffe0, #7fffd0, #a0f0ff);
-        background-size: 200% 200%;
-        animation: badgeGlow 4s ease-in-out infinite alternate;
+    .app { width:100%; max-width:480px; padding:18px 14px 88px; box-sizing:border-box; }
 
-        box-shadow: 0 0 12px rgba(120, 255, 200, 0.4),
-          inset 0 0 8px rgba(255, 255, 255, 0.4), 0 4px 12px rgba(0, 0, 0, 0.25);
+    /* ===== ЛИПКАЯ ШАПКА ===== */
+    .topbar{
+      position: sticky; top:0; z-index:5;
+      padding:10px 12px; margin:-18px -14px 10px;
+      backdrop-filter:saturate(1.2) blur(6px);
+      background:linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,0));
+      border-bottom:1px solid var(--line);
+    }
+    .brand{
+      text-align:center; font-weight:800; letter-spacing:.8px; font-size:22px;
+      background: linear-gradient(90deg,#fff,var(--accent)); -webkit-background-clip:text; color:transparent;
+    }
+    .chips{ display:flex; gap:8px; overflow-x:auto; padding:6px 2px 2px; }
+    .chip{
+      flex:0 0 auto; padding:8px 12px; border-radius:999px; font-size:13px; font-weight:600;
+      border:1px solid var(--line); color:var(--muted); background:rgba(255,255,255,.06); text-decoration:none;
+    }
+    .chip:hover{ color:#fff; border-color:rgba(255,255,255,.35); }
 
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
+    /* ===== БАННЕР ДОСТАВКИ (фикс выравнивания и красота) ===== */
+    .delivery-banner{
+      margin:12px 0 8px;
+      padding:12px 14px;
+      display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:center;
+      background:linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+      border:1px solid var(--line); border-radius:14px; font-weight:700;
+      box-shadow:0 6px 18px rgba(0,0,0,.22), inset 0 0 8px rgba(255,255,255,.06);
+    }
+    .delivery-icon{
+      width:28px; height:28px; display:grid; place-items:center;
+      border-radius:50%;
+      background:linear-gradient(135deg,#b9ffe0,#7fffd0,#a0f0ff);
+      box-shadow:0 0 10px rgba(120,255,200,.4), inset 0 0 6px rgba(255,255,255,.5);
+      font-size:16px; color:#0a3024;
+      animation:badgeGlow 4s ease-in-out infinite alternate;
+    }
+    .delivery-badge{
+      display:inline-block; padding:6px 14px; border-radius:999px; font-size:13px; font-weight:800;
+      color:#0a3024; text-align:center; letter-spacing:.5px; text-transform:uppercase;
+      background:linear-gradient(135deg,#b9ffe0,#7fffd0,#a0f0ff);
+      background-size:200% 200%; animation:badgeGlow 4s ease-in-out infinite alternate;
+      box-shadow:0 0 12px rgba(120,255,200,.4), inset 0 0 8px rgba(255,255,255,.4), 0 4px 12px rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.25); transition:transform .3s ease, box-shadow .3s ease;
+      margin-right:6px;
+    }
+    .delivery-badge:hover{
+      transform:scale(1.07);
+      box-shadow:0 0 16px rgba(120,255,200,.7), inset 0 0 10px rgba(255,255,255,.5), 0 6px 16px rgba(0,0,0,.3);
+    }
+    @keyframes badgeGlow { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
 
-      .delivery-badge:hover {
-        transform: scale(1.07);
-        box-shadow: 0 0 16px rgba(120, 255, 200, 0.7),
-          inset 0 0 10px rgba(255, 255, 255, 0.5), 0 6px 16px rgba(0, 0, 0, 0.3);
-      }
+    .section-title{ margin:16px 4px 10px; text-align:center; color:var(--accent); font-weight:800; font-size:18px; }
 
-      @keyframes badgeGlow {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
+    /* ===== КАРТОЧКИ БЛЮД ===== */
+    .item{
+      display:grid; grid-template-columns:100px 1fr; gap:12px; padding:10px; border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      border:1px solid var(--line); box-shadow:0 8px 22px rgba(0,0,0,.22); margin:10px 0;
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .item:hover{ transform:translateY(-4px); box-shadow:0 10px 26px rgba(0,0,0,.35), 0 0 10px rgba(242,211,74,.25); }
+    .thumb{ width:100%; height:88px; object-fit:cover; border-radius:14px; display:block; box-shadow:0 3px 10px rgba(0,0,0,.35); }
+    .meta{ display:flex; flex-direction:column; gap:6px; align-items:flex-start; }
+    .name{ font-weight:700; font-size:16px; line-height:1.2; display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
 
-      .section-title {
-        margin: 16px 4px 10px;
-        text-align: center;
-        color: var(--accent);
-        font-weight: 800;
-        font-size: 18px;
-      }
+    /* Бейджи (Хит / Новинка) */
+    .badge{ font-size:11px; font-weight:800; padding:3px 8px; border-radius:999px; letter-spacing:.3px; }
+    .badge.hit{ background:linear-gradient(90deg,#ffd269,#ffb84d); color:#3a2a00; }
+    .badge.new{ background:linear-gradient(90deg,#a7ffd9,#6fe3bd); color:#06362a; }
 
-      /* ===== КАРТОЧКИ БЛЮД ===== */
-      .item {
-        display: grid;
-        grid-template-columns: 100px 1fr;
-        gap: 12px;
-        padding: 10px;
-        border-radius: var(--radius);
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.08),
-          rgba(255, 255, 255, 0.05)
-        );
-        border: 1px solid var(--line);
-        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
-        margin: 10px 0;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-      }
-      .item:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35),
-          0 0 10px rgba(242, 211, 74, 0.25);
-      }
+    .muted{ font-size:12px; color:var(--muted); }
+    .price{
+      margin-top:auto; font-weight:800; font-size:15px; color:#1b1b1b;
+      background:linear-gradient(90deg,#ffeaa0,#f2d34a);
+      padding:6px 10px; border-radius:999px; box-shadow:0 4px 14px rgba(0,0,0,.2); white-space:nowrap;
+    }
 
-      .thumb {
-        width: 100%;
-        height: 88px;
-        object-fit: cover;
-        border-radius: 14px;
-        display: block;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
-      }
-      .meta {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        align-items: flex-start;
-      }
-      .name {
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 1.2;
-        display: flex;
-        gap: 6px;
-        align-items: center;
-        flex-wrap: wrap;
-      }
+    .divider{ height:12px; position:relative; margin:8px 0 2px; }
+    .divider::before{
+      content:""; position:absolute; inset:auto 10% 0 10%; height:1px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+    }
 
-      /* Бейджи (Хит / Новинка) */
-      .badge {
-        font-size: 11px;
-        font-weight: 800;
-        padding: 3px 8px;
-        border-radius: 999px;
-        letter-spacing: 0.3px;
-      }
-      .badge.hit {
-        background: linear-gradient(90deg, #ffd269, #ffb84d);
-        color: #3a2a00;
-      }
-      .badge.new {
-        background: linear-gradient(90deg, #a7ffd9, #6fe3bd);
-        color: #06362a;
-      }
+    /* ===== ПЛАВАЮЩАЯ ПАНЕЛЬ КОНТАКТОВ ===== */
+    .contact-bar{
+      position:fixed; left:0; right:0; bottom:0; z-index:20;
+      padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+      background:rgba(0,0,0,.35); backdrop-filter:blur(8px) saturate(1.2); border-top:1px solid var(--line);
+      display:flex; justify-content:center;
+    }
+    .contact-wrap{ width:100%; max-width:520px; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 
-      .muted {
-        font-size: 12px;
-        color: var(--muted);
-      }
-      .price {
-        margin-top: auto;
-        font-weight: 800;
-        font-size: 15px;
-        color: #1b1b1b;
-        background: linear-gradient(90deg, #ffeaa0, #f2d34a);
-        padding: 6px 10px;
-        border-radius: 999px;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-        white-space: nowrap;
-      }
+    /* === КНОПКИ (Позвонить / Instagram) === */
+    .cta{
+      display:flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 14px; border-radius:14px; text-decoration:none; font-weight:800; color:#0a3024;
+      letter-spacing:.5px; text-transform:uppercase;
+      background:linear-gradient(135deg,#fffab0,#ffe880,#f2d34a);
+      background-size:200% 200%; animation:buttonFlow 6s ease-in-out infinite alternate;
+      box-shadow:0 0 14px rgba(255,240,100,.35), inset 0 0 10px rgba(255,255,255,.3), 0 6px 16px rgba(0,0,0,.3);
+      border:1px solid rgba(255,255,255,.3); transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .cta:hover{ transform:scale(1.05); box-shadow:0 0 20px rgba(255,240,100,.6), inset 0 0 14px rgba(255,255,255,.5), 0 8px 18px rgba(0,0,0,.4); }
 
-      .divider {
-        height: 12px;
-        position: relative;
-        margin: 8px 0 2px;
-      }
-      .divider::before {
-        content: "";
-        position: absolute;
-        inset: auto 10% 0 10%;
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.35),
-          transparent
-        );
-      }
+    /* Instagram в зелёно-бирюзовых тонах */
+    .cta--ig{
+      background:linear-gradient(135deg,#8cf7d2,#57e3b0,#53c8c3);
+      background-size:200% 200%; animation:buttonFlow 7s ease-in-out infinite alternate;
+      color:#0b2f27; font-weight:800;
+      box-shadow:0 0 16px rgba(100,255,210,.35), inset 0 0 10px rgba(255,255,255,.3), 0 6px 16px rgba(0,0,0,.3);
+      border:1px solid rgba(255,255,255,.25);
+    }
+    .cta--ig:hover{ transform:scale(1.05); box-shadow:0 0 22px rgba(120,255,220,.6), inset 0 0 14px rgba(255,255,255,.5), 0 8px 18px rgba(0,0,0,.4); }
 
-      /* ===== ПЛАВАЮЩАЯ ПАНЕЛЬ КОНТАКТОВ ===== */
-      .contact-bar {
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 20;
-        padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
-        background: rgba(0, 0, 0, 0.35);
-        backdrop-filter: blur(8px) saturate(1.2);
-        border-top: 1px solid var(--line);
-        display: flex;
-        justify-content: center;
-      }
-      .contact-wrap {
-        width: 100%;
-        max-width: 520px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
-      /* === КНОПКИ ВНИЗУ (Позвонить / Instagram) === */
-.cta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 12px 14px;
-  border-radius: 14px;
-  text-decoration: none;
-  font-weight: 800;
-  color: #0a3024;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+    @keyframes buttonFlow { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
 
-  /* градиент для кнопки Позвонить */
-  background: linear-gradient(135deg, #fffab0, #ffe880, #f2d34a);
-  background-size: 200% 200%;
-  animation: buttonFlow 6s ease-in-out infinite alternate;
+    .icon{ width:18px; height:18px; display:inline-block; }
 
-  box-shadow:
-    0 0 14px rgba(255, 240, 100, 0.35),
-    inset 0 0 10px rgba(255, 255, 255, 0.3),
-    0 6px 16px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
+    .to-top{
+      position:fixed; right:14px; bottom:calc(70px + env(safe-area-inset-bottom)); z-index:10;
+      width:44px; height:44px; border-radius:999px; border:1px solid var(--line);
+      background:rgba(255,255,255,.1); color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center;
+      box-shadow:0 8px 16px rgba(0,0,0,.35); text-decoration:none;
+    }
 
-.cta:hover {
-  transform: scale(1.05);
-  box-shadow:
-    0 0 20px rgba(255, 240, 100, 0.6),
-    inset 0 0 14px rgba(255, 255, 255, 0.5),
-    0 8px 18px rgba(0, 0, 0, 0.4);
-}
-
-/* === Instagram кнопка === */
-/* === Instagram кнопка в зелёно-бирюзовых тонах === */
-.cta--ig {
-  background: linear-gradient(135deg, #8cf7d2, #57e3b0, #53c8c3);
-  background-size: 200% 200%;
-  animation: buttonFlow 7s ease-in-out infinite alternate;
-
-  color: #0b2f27;
-  font-weight: 800;
-  box-shadow:
-    0 0 16px rgba(100, 255, 210, 0.35),
-    inset 0 0 10px rgba(255, 255, 255, 0.3),
-    0 6px 16px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-.cta--ig:hover {
-  transform: scale(1.05);
-  box-shadow:
-    0 0 22px rgba(120, 255, 220, 0.6),
-    inset 0 0 14px rgba(255, 255, 255, 0.5),
-    0 8px 18px rgba(0, 0, 0, 0.4);
-}
-
-
-/* === общая анимация градиента === */
-@keyframes buttonFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-      .icon {
-        width: 18px;
-        height: 18px;
-        display: inline-block;
-      }
-
-      .to-top {
-        position: fixed;
-        right: 14px;
-        bottom: calc(70px + env(safe-area-inset-bottom));
-        z-index: 10;
-        width: 44px;
-        height: 44px;
-        border-radius: 999px;
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.1);
-        color: #fff;
-        font-weight: 800;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
-        text-decoration: none;
-      }
-
-      @media (min-width: 480px) {
-        .brand {
-          font-size: 24px;
-        }
-        .name {
-          font-size: 17px;
-        }
-        .price {
-          font-size: 16px;
-        }
-        .thumb {
-          height: 96px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="app" id="top">
-      <!-- Шапка -->
-      <div class="topbar">
-        <div class="brand">EATLINE</div>
-        <div class="chips">
-          <a class="chip" href="#main">Основное</a>
-          <a class="chip" href="#snacks">Закуски</a>
-          <a class="chip" href="#drinks">Напитки</a>
-          <a class="chip" href="#sets">Сеты</a>
-        </div>
+    @media (min-width:480px){
+      .brand{ font-size:24px; }
+      .name{ font-size:17px; }
+      .price{ font-size:16px; }
+      .thumb{ height:96px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app" id="top">
+    <!-- Шапка -->
+    <div class="topbar">
+      <div class="brand">EATLINE</div>
+      <div class="chips">
+        <a class="chip" href="#main">Основное</a>
+        <a class="chip" href="#snacks">Закуски</a>
+        <a class="chip" href="#drinks">Напитки</a>
+        <a class="chip" href="#sets">Сеты</a>
       </div>
-
-      <!-- Баннер: Для доставки -->
-      <div class="delivery-banner">
-        <span class="delivery-badge">Для доставки</span>
-        Доставка любимых блюд быстро и тепло 🍱
-      </div>
-
-      <!-- Основное -->
-      <h2 class="section-title" id="main">Основное меню</h2>
-
-      <article class="item">
-        <img class="thumb" src="./images/osh.png" alt="Плов" />
-        <div class="meta">
-          <div class="name">Плов <span class="badge hit">Хит</span></div>
-          <div class="muted">Традиционный узбекский плов</div>
-          <div class="price">37&nbsp;000</div>
-        </div>
-      </article>
-
-      <article class="item">
-        <img class="thumb" src="./images/шурпа.jpeg" alt="Шурпа" />
-        <div class="meta">
-          <div class="name">Шурпа</div>
-          <div class="muted">Насыщенный бульон с мясом и овощами</div>
-          <div class="price">35&nbsp;000</div>
-        </div>
-      </article>
-
-      <article class="item">
-        <img class="thumb" src="./images/бифштекс.webp" alt="Бифштекс" />
-        <div class="meta">
-          <div class="name">
-            Бифштекс <span class="badge new">Новинка</span>
-          </div>
-          <div class="muted">Сочный стейк со специями</div>
-          <div class="price">34&nbsp;000</div>
-        </div>
-      </article>
-
-      <article class="item">
-        <img class="thumb" src="./images/машхурда.webp" alt="Машхурда" />
-        <div class="meta">
-          <div class="name">Машхурда</div>
-          <div class="muted">Сытный суп из маша</div>
-          <div class="price">32&nbsp;000</div>
-        </div>
-      </article>
-
-      <article class="item">
-        <img class="thumb" src="./images/хоним.jpeg" alt="Хоним" />
-        <div class="meta">
-          <div class="name">Хоним, 1 шт</div>
-          <div class="muted">Тонкое тесто с начинкой</div>
-          <div class="price">12&nbsp;000</div>
-        </div>
-      </article>
-
-      <article class="item">
-        <img class="thumb" src="./images/лагман.png" alt="Лагман" />
-        <div class="meta">
-          <div class="name">Лагман</div>
-          <div class="muted">Домашняя лапша с мясом</div>
-          <div class="price">36&nbsp;000</div>
-        </div>
-      </article>
-
-      <div class="divider"></div>
-
-      <!-- Закуски -->
-      <h2 class="section-title" id="snacks">Закуски</h2>
-
-      <article class="item">
-        <img class="thumb" src="./images/картошка фри.jpg" alt="Картошка фри" />
-        <div class="meta">
-          <div class="name">Картошка фри</div>
-          <div class="muted">Хрустящая, золотистая</div>
-          <div class="price">14&nbsp;000</div>
-        </div>
-      </article>
-
-      <article class="item">
-        <img class="thumb" src="./images/ачичук.jpeg" alt="Салат" />
-        <div class="meta">
-          <div class="name">Салат</div>
-          <div class="muted">Свежие овощи</div>
-          <div class="price">9&nbsp;000</div>
-        </div>
-      </article>
-
-      <article class="item">
-        <img class="thumb" src="./images/лепешка.jpg" alt="Лепёшка" />
-        <div class="meta">
-          <div class="name">Лепёшка</div>
-          <div class="muted">Свежая тандырная</div>
-          <div class="price">6&nbsp;000</div>
-        </div>
-      </article>
-
-      <article class="item">
-        <img class="thumb" src="./images/пирожки.jpg" alt="Пирожки" />
-        <div class="meta">
-          <div class="name">Перашки</div>
-          <div class="muted">Тёплая выпечка</div>
-          <div class="price">5&nbsp;000</div>
-        </div>
-      </article>
-
-      <div class="divider"></div>
-
-      <!-- Напитки -->
-      <h2 class="section-title" id="drinks">Напитки</h2>
-
-      <article class="item">
-        <img class="thumb" src="./images/кока кола.avif" alt="Кока-кола 1L" />
-        <div class="meta">
-          <div class="name">Кока-кола 1L</div>
-          <div class="muted">Холодная</div>
-          <div class="price">15&nbsp;000</div>
-        </div>
-      </article>
-
-      <article class="item">
-        <img class="thumb" src="./images/фанта.jpg" alt="Фанта 1L" />
-        <div class="meta">
-          <div class="name">Фанта 1L</div>
-          <div class="muted">Апельсиновая</div>
-          <div class="price">15&nbsp;000</div>
-        </div>
-      </article>
-
-      <article class="item">
-        <img class="thumb" src="./images/сок.avif" alt="Сок 1L" />
-        <div class="meta">
-          <div class="name">Сок 1L</div>
-          <div class="muted">Яблочный / апельсиновый</div>
-          <div class="price">16&nbsp;000</div>
-        </div>
-      </article>
-
-      <article class="item">
-        <img class="thumb" src="./images/айс теа.jpg" alt="Холодный чай 1L" />
-        <div class="meta">
-          <div class="name">Холодный чай 1L</div>
-          <div class="muted">Освежающий</div>
-          <div class="price">11&nbsp;000</div>
-        </div>
-      </article>
-
-      <article class="item">
-        <img class="thumb" src="./images/вода.jpeg" alt="Вода 1L" />
-        <div class="meta">
-          <div class="name">Вода 1L</div>
-          <div class="muted">Газ/негаз</div>
-          <div class="price">6&nbsp;000</div>
-        </div>
-      </article>
-
-      <article class="item">
-        <img
-          class="thumb"
-          src="./images/чай с лимоном.jpeg"
-          alt="Чай с лимоном"
-        />
-        <div class="meta">
-          <div class="name">Чай с лимоном</div>
-          <div className="muted">Горячий</div>
-          <div class="price">5&nbsp;000</div>
-        </div>
-      </article>
-
-      <div class="divider"></div>
-
-      <!-- Сеты -->
-      <h2 class="section-title" id="sets">Сет</h2>
-
-      <article class="item">
-        <img
-          class="thumb"
-          src="./images/osh.png"
-          alt="Сет: Плов + Салат + Лепёшка"
-        />
-        <div class="meta">
-          <div class="name">
-            Плов + Салат + Лепёшка <span class="badge hit">Хит</span>
-          </div>
-          <div class="muted">Сбалансированный обед</div>
-          <div class="price">45&nbsp;000</div>
-        </div>
-      </article>
-
-      <article class="item">
-        <img
-          class="thumb"
-          src="./images/шурпа.jpeg"
-          alt="Сет: Шурпа + Перашки + Лепёшка"
-        />
-        <div class="meta">
-          <div class="name">Шурпа + Перашки + Лепёшка</div>
-          <div class="muted">Сытно и тепло</div>
-          <div class="price">43&nbsp;000</div>
-        </div>
-      </article>
-
-      <article class="item">
-        <img
-          class="thumb"
-          src="./images/бифштекс.webp"
-          alt="Сет: Бифштекс + Лепёшка + Фанта 1L"
-        />
-        <div class="meta">
-          <div class="name">Бифштекс + Лепёшка + Фанта 1L</div>
-          <div class="muted">Сочный сет на ужин</div>
-          <div class="price">47&nbsp;000</div>
-        </div>
-      </article>
-
-      <article class="item">
-        <img
-          class="thumb"
-          src="./images/машхурда.webp"
-          alt="Сет: Машхурда + Перашки + Лепёшка"
-        />
-        <div class="meta">
-          <div class="name">Машхурда + Перашки + Лепёшка</div>
-          <div class="muted">Тёплый и домашний</div>
-          <div class="price">39&nbsp;000</div>
-        </div>
-      </article>
-
-      <!-- Кнопка наверх -->
-      <a class="to-top" href="#top" aria-label="Наверх">↑</a>
     </div>
 
-    <!-- Плавающая контакт-панель -->
-    <nav class="contact-bar" aria-label="Контакты">
-      <div class="contact-wrap">
-        <a class="cta" href="tel:+998977283337">
-          <!-- phone icon -->
-          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path
-              d="M6.6 10.8c1.2 2.4 3.1 4.3 5.5 5.5l2-2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.5.57a1 1 0 0 1 1 1v3.1a1 1 0 0 1-1 1C10.5 19.8 4.2 13.5 4.2 5.4a1 1 0 0 1 1-1h3.1a1 1 0 0 1 1 1c0 1.2.2 2.4.57 3.5a1 1 0 0 1-.25 1l-2 2Z"
-              fill="#1b1b1b"
-            />
-          </svg>
-          Позвонить
-        </a>
-        <a
-          class="cta cta--ig"
-          href="https://instagram.com/eatlinego"
-          target="_blank"
-          rel="noopener"
-        >
-          <!-- instagram icon -->
-          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect
-              x="3"
-              y="3"
-              width="18"
-              height="18"
-              rx="5"
-              stroke="#1b1b1b"
-              stroke-width="2"
-            />
-            <circle cx="12" cy="12" r="4" stroke="#1b1b1b" stroke-width="2" />
-            <circle cx="17.5" cy="6.5" r="1.2" fill="#1b1b1b" />
-          </svg>
-          Instagram
-        </a>
+    <!-- Баннер: Для доставки -->
+    <div class="delivery-banner">
+      <div class="delivery-icon">🚚</div>
+      <div><span class="delivery-badge">Для доставки</span> Доставка любимых блюд быстро и тепло 🍱</div>
+    </div>
+
+    <!-- Основное -->
+    <h2 class="section-title" id="main">Основное меню</h2>
+
+    <article class="item">
+      <img class="thumb" src="./images/osh.png" alt="Плов"/>
+      <div class="meta">
+        <div class="name">Плов <span class="badge hit">Хит</span></div>
+        <div class="muted">Традиционный узбекский плов</div>
+        <div class="price">37&nbsp;000</div>
       </div>
-    </nav>
-  </body>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/шурпа.jpeg" alt="Шурпа"/>
+      <div class="meta">
+        <div class="name">Шурпа</div>
+        <div class="muted">Насыщенный бульон с мясом и овощами</div>
+        <div class="price">35&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/бифштекс.webp" alt="Бифштекс"/>
+      <div class="meta">
+        <div class="name">Бифштекс <span class="badge new">Новинка</span></div>
+        <div class="muted">Сочный стейк со специями</div>
+        <div class="price">34&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/машхурда.webp" alt="Машхурда"/>
+      <div class="meta">
+        <div class="name">Машхурда</div>
+        <div class="muted">Сытный суп из маша</div>
+        <div class="price">32&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/хоним.jpeg" alt="Хоним"/>
+      <div class="meta">
+        <div class="name">Хоним, 1 шт</div>
+        <div class="muted">Тонкое тесто с начинкой</div>
+        <div class="price">12&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/лагман.png" alt="Лагман"/>
+      <div class="meta">
+        <div class="name">Лагман</div>
+        <div class="muted">Домашняя лапша с мясом</div>
+        <div class="price">36&nbsp;000</div>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Закуски -->
+    <h2 class="section-title" id="snacks">Закуски</h2>
+
+    <article class="item">
+      <img class="thumb" src="./images/картошка фри.jpg" alt="Картошка фри"/>
+      <div class="meta">
+        <div class="name">Картошка фри</div>
+        <div class="muted">Хрустящая, золотистая</div>
+        <div class="price">14&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/ачичук.jpeg" alt="Салат"/>
+      <div class="meta">
+        <div class="name">Салат</div>
+        <div class="muted">Свежие овощи</div>
+        <div class="price">9&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/лепешка.jpg" alt="Лепёшка"/>
+      <div class="meta">
+        <div class="name">Лепёшка</div>
+        <div class="muted">Свежая тандырная</div>
+        <div class="price">6&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/пирожки.jpg" alt="Пирожки"/>
+      <div class="meta">
+        <div class="name">Перашки</div>
+        <div class="muted">Тёплая выпечка</div>
+        <div class="price">5&nbsp;000</div>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Напитки -->
+    <h2 class="section-title" id="drinks">Напитки</h2>
+
+    <article class="item">
+      <img class="thumb" src="./images/кока кола.avif" alt="Кока-кола 1L"/>
+      <div class="meta">
+        <div class="name">Кока-кола 1L</div>
+        <div class="muted">Холодная</div>
+        <div class="price">15&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/фанта.jpg" alt="Фанта 1L"/>
+      <div class="meta">
+        <div class="name">Фанта 1L</div>
+        <div class="muted">Апельсиновая</div>
+        <div class="price">15&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/сок.avif" alt="Сок 1L"/>
+      <div class="meta">
+        <div class="name">Сок 1L</div>
+        <div class="muted">Яблочный / апельсиновый</div>
+        <div class="price">16&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/айс теа.jpg" alt="Холодный чай 1L"/>
+      <div class="meta">
+        <div class="name">Холодный чай 1L</div>
+        <div class="muted">Освежающий</div>
+        <div class="price">11&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/вода.jpeg" alt="Вода 1L"/>
+      <div class="meta">
+        <div class="name">Вода 1L</div>
+        <div class="muted">Газ/негаз</div>
+        <div class="price">6&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/чай с лимоном.jpeg" alt="Чай с лимоном"/>
+      <div class="meta">
+        <div class="name">Чай с лимоном</div>
+        <div class="muted">Горячий</div>
+        <div class="price">5&nbsp;000</div>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Сеты -->
+    <h2 class="section-title" id="sets">Сет</h2>
+
+    <article class="item">
+      <img class="thumb" src="./images/osh.png" alt="Сет: Плов + Салат + Лепёшка"/>
+      <div class="meta">
+        <div class="name">Плов + Салат + Лепёшка <span class="badge hit">Хит</span></div>
+        <div class="muted">Сбалансированный обед</div>
+        <div class="price">45&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/шурпа.jpeg" alt="Сет: Шурпа + Перашки + Лепёшка"/>
+      <div class="meta">
+        <div class="name">Шурпа + Перашки + Лепёшка</div>
+        <div class="muted">Сытно и тепло</div>
+        <div class="price">43&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/бифштекс.webp" alt="Сет: Бифштекс + Лепёшка + Фанта 1L"/>
+      <div class="meta">
+        <div class="name">Бифштекс + Лепёшка + Фанта 1L</div>
+        <div class="muted">Сочный сет на ужин</div>
+        <div class="price">47&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/машхурда.webp" alt="Сет: Машхурда + Перашки + Лепёшка"/>
+      <div class="meta">
+        <div class="name">Машхурда + Перашки + Лепёшка</div>
+        <div class="muted">Тёплый и домашний</div>
+        <div class="price">39&nbsp;000</div>
+      </div>
+    </article>
+
+    <!-- Кнопка наверх -->
+    <a class="to-top" href="#top" aria-label="Наверх">↑</a>
+  </div>
+
+  <!-- Плавающая контакт-панель -->
+  <nav class="contact-bar" aria-label="Контакты">
+    <div class="contact-wrap">
+      <a class="cta" href="tel:+998977283337">
+        <!-- phone icon -->
+        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6.6 10.8c1.2 2.4 3.1 4.3 5.5 5.5l2-2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.5.57a1 1 0 0 1 1 1v3.1a1 1 0 0 1-1 1C10.5 19.8 4.2 13.5 4.2 5.4a1 1 0 0 1 1-1h3.1a1 1 0 0 1 1 1c0 1.2.2 2.4.57 3.5a1 1 0 0 1-.25 1l-2 2Z" fill="#1b1b1b"/>
+        </svg>
+        Позвонить
+      </a>
+      <a class="cta cta--ig" href="https://instagram.com/eatlinego" target="_blank" rel="noopener">
+        <!-- instagram icon -->
+        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5" stroke="#1b1b1b" stroke-width="2"/>
+          <circle cx="12" cy="12" r="4" stroke="#1b1b1b" stroke-width="2"/>
+          <circle cx="17.5" cy="6.5" r="1.2" fill="#1b1b1b"/>
+        </svg>
+        Instagram
+      </a>
+    </div>
+  </nav>
+</body>
 </html>
