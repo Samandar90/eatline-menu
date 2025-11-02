@@ -51,7 +51,7 @@
       top: 0;
       z-index: 5;
       padding: 10px 12px;
-      margin: -18px -14px 14px;
+      margin: -18px -14px 10px;
       backdrop-filter: saturate(1.2) blur(6px);
       background: linear-gradient(180deg, rgba(0, 0, 0, .28), rgba(0, 0, 0, .0));
       border-bottom: 1px solid var(--line);
@@ -84,8 +84,24 @@
     }
     .chip:hover { color:#fff; border-color: rgba(255,255,255,.35); }
 
+    /* ===== БАННЕР ДОСТАВКИ ===== */
+    .delivery-banner{
+      margin: 10px 0 6px;
+      display:flex; align-items:center; justify-content:center; gap:10px;
+      padding: 10px 12px;
+      background: linear-gradient(90deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border:1px solid var(--line);
+      border-radius: 14px;
+      font-weight:700;
+    }
+    .delivery-badge{
+      padding: 6px 10px; border-radius: 999px; font-size: 12px; color:#1b1b1b;
+      background: linear-gradient(90deg, #bfffdf, #9ee8c9);
+      box-shadow: 0 6px 14px rgba(0,0,0,.2);
+    }
+
     .section-title {
-      margin: 18px 4px 10px;
+      margin: 16px 4px 10px;
       text-align: center;
       color: var(--accent);
       font-weight: 800;
@@ -119,7 +135,19 @@
       box-shadow: 0 3px 10px rgba(0, 0, 0, .35);
     }
     .meta { display:flex; flex-direction:column; gap:6px; align-items:flex-start; }
-    .name { font-weight:700; font-size:16px; line-height:1.2; }
+    .name { font-weight:700; font-size:16px; line-height:1.2; display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
+
+    /* Бейджи (Хит / Новинка) */
+    .badge{
+      font-size:11px; font-weight:800; padding:3px 8px; border-radius:999px; letter-spacing:.3px;
+    }
+    .badge.hit{
+      background: linear-gradient(90deg, #ffd269, #ffb84d); color:#3a2a00;
+    }
+    .badge.new{
+      background: linear-gradient(90deg, #a7ffd9, #6fe3bd); color:#06362a;
+    }
+
     .muted { font-size:12px; color: var(--muted); }
     .price {
       margin-top: auto;
@@ -130,6 +158,7 @@
       padding: 6px 10px;
       border-radius: 999px;
       box-shadow: 0 4px 14px rgba(0, 0, 0, .2);
+      white-space: nowrap;
     }
 
     .divider { height:12px; position:relative; margin:8px 0 2px; }
@@ -202,37 +231,213 @@
         <a class="chip" href="#main">Основное</a>
         <a class="chip" href="#snacks">Закуски</a>
         <a class="chip" href="#drinks">Напитки</a>
+        <a class="chip" href="#sets">Сеты</a>
       </div>
+    </div>
+
+    <!-- Баннер: Для доставки -->
+    <div class="delivery-banner">
+      <span class="delivery-badge">Для доставки</span>
+      Доставка любимых блюд быстро и тепло 🍱
     </div>
 
     <!-- Основное -->
     <h2 class="section-title" id="main">Основное меню</h2>
-    <article class="item"><img class="thumb" src="./images/osh.png" alt="Плов"/><div class="meta"><div class="name">Плов</div><div class="muted">Традиционный узбекский плов</div><div class="price">54&nbsp;000&nbsp;сум</div></div></article>
-    <article class="item"><img class="thumb" src="./images/шурпа.jpeg" alt="Шурпа"/><div class="meta"><div class="name">Шурпа</div><div class="muted">Насыщенный бульон с мясом и овощами</div><div class="price">51&nbsp;000&nbsp;сум</div></div></article>
-    <article class="item"><img class="thumb" src="./images/бифштекс.webp" alt="Бифштекс"/><div class="meta"><div class="name">Бифштекс</div><div class="muted">Сочный стейк со специями</div><div class="price">47&nbsp;000&nbsp;сум</div></div></article>
-    <article class="item"><img class="thumb" src="./images/машхурда.webp" alt="Машхурда"/><div class="meta"><div class="name">Машхурда</div><div class="muted">Сытный суп из маша</div><div class="price">44&nbsp;000&nbsp;сум</div></div></article>
-    <article class="item"><img class="thumb" src="./images/хоним.jpeg" alt="Хоним"/><div class="meta"><div class="name">Хоним, 1 шт</div><div class="muted">Тонкое тесто с начинкой</div><div class="price">12&nbsp;000&nbsp;сум</div></div></article>
-    <article class="item"><img class="thumb" src="./images/лагман.png" alt="Лагман"/><div class="meta"><div class="name">Лагман</div><div class="muted">Домашняя лапша с мясом</div><div class="price">49&nbsp;000&nbsp;сум</div></div></article>
+
+    <article class="item">
+      <img class="thumb" src="./images/osh.png" alt="Плов"/>
+      <div class="meta">
+        <div class="name">Плов <span class="badge hit">Хит</span></div>
+        <div class="muted">Традиционный узбекский плов</div>
+        <div class="price">37&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/шурпа.jpeg" alt="Шурпа"/>
+      <div class="meta">
+        <div class="name">Шурпа</div>
+        <div class="muted">Насыщенный бульон с мясом и овощами</div>
+        <div class="price">35&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/бифштекс.webp" alt="Бифштекс"/>
+      <div class="meta">
+        <div class="name">Бифштекс <span class="badge new">Новинка</span></div>
+        <div class="muted">Сочный стейк со специями</div>
+        <div class="price">34&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/машхурда.webp" alt="Машхурда"/>
+      <div class="meta">
+        <div class="name">Машхурда</div>
+        <div class="muted">Сытный суп из маша</div>
+        <div class="price">32&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/хоним.jpeg" alt="Хоним"/>
+      <div class="meta">
+        <div class="name">Хоним, 1 шт</div>
+        <div class="muted">Тонкое тесто с начинкой</div>
+        <div class="price">12&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/лагман.png" alt="Лагман"/>
+      <div class="meta">
+        <div class="name">Лагман</div>
+        <div class="muted">Домашняя лапша с мясом</div>
+        <div class="price">36&nbsp;000</div>
+      </div>
+    </article>
 
     <div class="divider"></div>
 
     <!-- Закуски -->
     <h2 class="section-title" id="snacks">Закуски</h2>
-    <article class="item"><img class="thumb" src="./images/картошка фри.jpg" alt="Картошка фри"/><div class="meta"><div class="name">Картошка фри</div><div class="muted">Хрустящая, золотистая</div><div class="price">17&nbsp;000&nbsp;сум</div></div></article>
-    <article class="item"><img class="thumb" src="./images/ачичук.jpeg" alt="Салат"/><div class="meta"><div class="name">Салат</div><div class="muted">Свежие овощи</div><div class="price">14&nbsp;000&nbsp;сум</div></div></article>
-    <article class="item"><img class="thumb" src="./images/пирожки.jpg" alt="Пирожок"/><div class="meta"><div class="name">Пирожок, 1 шт</div><div class="muted">Тёплая выпечка</div><div class="price">5&nbsp;000&nbsp;сум</div></div></article>
-    <article class="item"><img class="thumb" src="./images/лепешка.jpg" alt="Лепёшка"/><div class="meta"><div class="name">Лепёшка</div><div class="muted">Свежая тандырная</div><div class="price">7&nbsp;000&nbsp;сум</div></div></article>
+
+    <article class="item">
+      <img class="thumb" src="./images/картошка фри.jpg" alt="Картошка фри"/>
+      <div class="meta">
+        <div class="name">Картошка фри</div>
+        <div class="muted">Хрустящая, золотистая</div>
+        <div class="price">14&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/ачичук.jpeg" alt="Салат"/>
+      <div class="meta">
+        <div class="name">Салат</div>
+        <div class="muted">Свежие овощи</div>
+        <div class="price">9&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/лепешка.jpg" alt="Лепёшка"/>
+      <div class="meta">
+        <div class="name">Лепёшка</div>
+        <div class="muted">Свежая тандырная</div>
+        <div class="price">6&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/пирожки.jpg" alt="Пирожки"/>
+      <div class="meta">
+        <div class="name">Перашки</div>
+        <div class="muted">Тёплая выпечка</div>
+        <div class="price">5&nbsp;000</div>
+      </div>
+    </article>
 
     <div class="divider"></div>
 
     <!-- Напитки -->
     <h2 class="section-title" id="drinks">Напитки</h2>
-    <article class="item"><img class="thumb" src="./images/кока кола.avif" alt="Кока-кола"/><div class="meta"><div class="name">Кока-кола</div><div class="muted">Холодная</div><div class="price">17&nbsp;000&nbsp;сум</div></div></article>
-    <article class="item"><img class="thumb" src="./images/фанта.jpg" alt="Фанта"/><div class="meta"><div class="name">Фанта</div><div class="muted">Апельсиновая</div><div class="price">17&nbsp;000&nbsp;сум</div></div></article>
-    <article class="item"><img class="thumb" src="./images/сок.avif" alt="Сок"/><div class="meta"><div class="name">Сок</div><div class="muted">Яблочный / апельсиновый</div><div class="price">18&nbsp;000&nbsp;сум</div></div></article>
-    <article class="item"><img class="thumb" src="./images/айс теа.jpg" alt="Холодный чай"/><div class="meta"><div class="name">Холодный чай</div><div class="muted">Освежающий</div><div class="price">14&nbsp;000&nbsp;сум</div></div></article>
-    <article class="item"><img class="thumb" src="./images/чай с лимоном.jpeg" alt="Чай с лимоном"/><div class="meta"><div class="name">Чай с лимоном</div><div class="muted">Горячий</div><div class="price">5&nbsp;000&nbsp;сум</div></div></article>
-    <article class="item"><img class="thumb" src="./images/вода.jpeg" alt="Вода"/><div class="meta"><div class="name">Вода</div><div class="muted">Газ/негаз</div><div class="price">6&nbsp;000&nbsp;сум</div></div></article>
+
+    <article class="item">
+      <img class="thumb" src="./images/кока кола.avif" alt="Кока-кола 1L"/>
+      <div class="meta">
+        <div class="name">Кока-кола 1L</div>
+        <div class="muted">Холодная</div>
+        <div class="price">15&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/фанта.jpg" alt="Фанта 1L"/>
+      <div class="meta">
+        <div class="name">Фанта 1L</div>
+        <div class="muted">Апельсиновая</div>
+        <div class="price">15&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/сок.avif" alt="Сок 1L"/>
+      <div class="meta">
+        <div class="name">Сок 1L</div>
+        <div class="muted">Яблочный / апельсиновый</div>
+        <div class="price">16&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/айс теа.jpg" alt="Холодный чай 1L"/>
+      <div class="meta">
+        <div class="name">Холодный чай 1L</div>
+        <div class="muted">Освежающий</div>
+        <div class="price">11&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/вода.jpeg" alt="Вода 1L"/>
+      <div class="meta">
+        <div class="name">Вода 1L</div>
+        <div class="muted">Газ/негаз</div>
+        <div class="price">6&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/чай с лимоном.jpeg" alt="Чай с лимоном"/>
+      <div class="meta">
+        <div class="name">Чай с лимоном</div>
+        <div className="muted">Горячий</div>
+        <div class="price">5&nbsp;000</div>
+      </div>
+    </article>
+
+    <div class="divider"></div>
+
+    <!-- Сеты -->
+    <h2 class="section-title" id="sets">Сет</h2>
+
+    <article class="item">
+      <img class="thumb" src="./images/osh.png" alt="Сет: Плов + Салат + Лепёшка"/>
+      <div class="meta">
+        <div class="name">Плов + Салат + Лепёшка <span class="badge hit">Хит</span></div>
+        <div class="muted">Сбалансированный обед</div>
+        <div class="price">45&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/шурпа.jpeg" alt="Сет: Шурпа + Перашки + Лепёшка"/>
+      <div class="meta">
+        <div class="name">Шурпа + Перашки + Лепёшка</div>
+        <div class="muted">Сытно и тепло</div>
+        <div class="price">43&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/бифштекс.webp" alt="Сет: Бифштекс + Лепёшка + Фанта 1L"/>
+      <div class="meta">
+        <div class="name">Бифштекс + Лепёшка + Фанта 1L</div>
+        <div class="muted">Сочный сет на ужин</div>
+        <div class="price">47&nbsp;000</div>
+      </div>
+    </article>
+
+    <article class="item">
+      <img class="thumb" src="./images/машхурда.webp" alt="Сет: Машхурда + Перашки + Лепёшка"/>
+      <div class="meta">
+        <div class="name">Машхурда + Перашки + Лепёшка</div>
+        <div class="muted">Тёплый и домашний</div>
+        <div class="price">39&nbsp;000</div>
+      </div>
+    </article>
 
     <!-- Кнопка наверх -->
     <a class="to-top" href="#top" aria-label="Наверх">↑</a>
