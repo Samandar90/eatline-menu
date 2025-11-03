@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EATLINE — QR код меню</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#0b2f27; --bg2:#14694e; --glass:rgba(255,255,255,.06);
+      --line:rgba(255,255,255,.18); --accent:#f2d34a; --text:#fff;
+    }
+    html,body{margin:0;height:100%;font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);
+      background: radial-gradient(900px 500px at 0% 100%, rgba(255,215,100,.12), transparent 70%),
+                  linear-gradient(135deg,var(--bg1),var(--bg2));
+      display:flex;align-items:center;justify-content:center;
+    }
+    .wrap{width:100%;max-width:520px;padding:18px 14px;box-sizing:border-box}
+    .card{
+      background:linear-gradient(180deg, var(--glass), transparent);
+      border:1px solid var(--line); border-radius:20px; padding:18px; text-align:center;
+      box-shadow:0 12px 28px rgba(0,0,0,.35), inset 0 0 12px rgba(255,255,255,.05);
+    }
+    .brand{font-weight:800;font-size:22px;letter-spacing:.6px;margin-bottom:6px;
+      background:linear-gradient(90deg,#fff,var(--accent));-webkit-background-clip:text;color:transparent;}
+    .muted{opacity:.8;font-size:14px;margin-bottom:16px}
+    .qr-box{
+      background:#fff;border-radius:16px;padding:12px;display:inline-block;
+      box-shadow:0 10px 20px rgba(0,0,0,.25);
+    }
+    canvas{display:block;width:100%;height:auto;max-width:360px}
+    .controls{display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+    .btn{
+      padding:11px 14px;border-radius:12px;border:1px solid var(--line);
+      background:linear-gradient(135deg,#fffab0,#ffe880,#f2d34a);
+      color:#1b1b1b;font-weight:800;text-decoration:none;cursor:pointer;
+      box-shadow:0 6px 16px rgba(0,0,0,.3), inset 0 0 8px rgba(255,255,255,.35);
+    }
+    .btn.alt{
+      background:linear-gradient(135deg,#8cf7d2,#57e3b0,#53c8c3); color:#0b2f27;
+    }
+    .grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:16px}
+    .input{
+      width:100%;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.06);
+      padding:12px 14px;color:#fff;font-size:14px;outline:none;
+    }
+    .hint{font-size:12px;opacity:.8;margin-top:8px}
+    @media(min-width:460px){ canvas{max-width:400px} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="brand">EATLINE</div>
+      <div class="muted">QR-код для быстрого перехода к меню</div>
+
+      <div class="qr-box"><canvas id="qrcanvas"></canvas></div>
+
+      <div class="controls">
+        <button id="download" class="btn">Скачать PNG</button>
+        <button id="print" class="btn alt">Печать</button>
+      </div>
+
+      <div class="grid">
+        <input id="data" class="input" type="text"
+               value="https://Samandar90.github.io/eatline-menu/"
+               placeholder="Ссылка/телефон/Instagram для QR">
+        <div class="controls">
+          <button id="apply" class="btn">Обновить QR</button>
+          <button id="phone" class="btn alt">QR на звонок</button>
+          <button id="insta" class="btn alt">QR на Instagram</button>
+        </div>
+      </div>
+
+      <div class="hint">Подсказка: можно напечатать и повесить у входа. Для лучшего скана используйте белый фон (как здесь).</div>
+    </div>
+  </div>
+
+  <!-- Лёгкая библиотека QR (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+  <script>
+    const MENU_URL = "https://Samandar90.github.io/eatline-menu/";
+    const INSTAGRAM = "https://instagram.com/eatlinego";
+    const PHONE = "tel:+998977283337";
+
+    const qr = new QRious({
+      element: document.getElementById('qrcanvas'),
+      value: MENU_URL,
+      size: 400,
+      level: 'H', // максимальная коррекция, лучше скан
+      background: '#ffffff',
+      foreground: '#000000'
+    });
+
+    const $ = (id) => document.getElementById(id);
+
+    $('apply').onclick = () => {
+      const v = $('data').value.trim();
+      if (v) qr.value = v;
+    };
+    $('phone').onclick = () => { $('data').value = PHONE; qr.value = PHONE; };
+    $('insta').onclick = () => { $('data').value = INSTAGRAM; qr.value = INSTAGRAM; };
+
+    $('download').onclick = () => {
+      const link = document.createElement('a');
+      link.download = 'eatline-qr.png';
+      link.href = qr.toDataURL('image/png');
+      link.click();
+    };
+
+    $('print').onclick = () => window.print();
+  </script>
+</body>
+</html>
